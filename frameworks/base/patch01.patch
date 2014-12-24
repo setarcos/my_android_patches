@@ -1,0 +1,48 @@
+diff --git a/packages/Keyguard/res/layout/keyguard_pattern_view.xml b/packages/Keyguard/res/layout/keyguard_pattern_view.xml
+index 0c9380c..cca0809 100644
+--- a/packages/Keyguard/res/layout/keyguard_pattern_view.xml
++++ b/packages/Keyguard/res/layout/keyguard_pattern_view.xml
+@@ -27,6 +27,8 @@
+     android:orientation="vertical"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
++    android:layout_marginStart="-15dip"
++    android:layout_marginEnd="-25dip"
+     androidprv:layout_maxWidth="@dimen/keyguard_security_width"
+     androidprv:layout_maxHeight="@dimen/keyguard_security_height"
+     android:gravity="center_horizontal"
+@@ -59,9 +61,10 @@
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:layout_weight="1"
+-                android:layout_marginEnd="8dip"
+-                android:layout_marginBottom="4dip"
+-                android:layout_marginStart="8dip"
++                android:layout_marginTop="@dimen/kg_pattern_top_margin"
++                android:layout_marginEnd="-18dip"
++                android:layout_marginBottom="@dimen/kg_pattern_bottom_margin"
++                android:layout_marginStart="-8dip"
+                 android:layout_gravity="center_horizontal"
+                 android:gravity="center"
+                 android:contentDescription="@string/keyguard_accessibility_pattern_area" />
+diff --git a/packages/Keyguard/res/values/dimens.xml b/packages/Keyguard/res/values/dimens.xml
+index fa44289..0e0be85 100644
+--- a/packages/Keyguard/res/values/dimens.xml
++++ b/packages/Keyguard/res/values/dimens.xml
+@@ -167,9 +167,15 @@
+     <!-- Left padding of num pad key on keyguard -->
+     <dimen name="kg_num_pad_key_padding_left">20dp</dimen>
+ 
++    <!-- Top margin of lock pattern on keyguard -->
++    <dimen name="kg_pattern_top_margin">-10dp</dimen>
++
++    <!-- Bottom margin of lock pattern on keyguard -->
++    <dimen name="kg_pattern_bottom_margin">-10dp</dimen>
++
+     <!-- EmergencyCarrierArea overlap - amount to overlap the emergency button and carrier text.
+          Should be 0 on devices with plenty of room (e.g. tablets) -->
+-    <dimen name="eca_overlap">-10dip</dimen>
++    <dimen name="eca_overlap">-15dip</dimen>
+ 
+     <!-- Default clock parameters -->
+     <dimen name="bottom_text_spacing_digital">-8dp</dimen>

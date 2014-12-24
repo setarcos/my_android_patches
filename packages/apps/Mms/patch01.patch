@@ -1,0 +1,255 @@
+diff --git a/res/drawable/listitem_background.xml b/res/drawable/listitem_background.xml
+index 7febe52..dc84ab7 100644
+--- a/res/drawable/listitem_background.xml
++++ b/res/drawable/listitem_background.xml
+@@ -20,5 +20,5 @@
+     <item android:state_pressed="true" android:state_selected="false"
+         android:drawable="@android:color/transparent" />
+     <item android:state_selected="false"
+-          android:drawable="@android:color/white" />
++          android:drawable="@android:color/black" />
+ </selector>
+diff --git a/res/layout/compose_message_activity.xml b/res/layout/compose_message_activity.xml
+index cf5e3eb..f1ce7bb 100644
+--- a/res/layout/compose_message_activity.xml
++++ b/res/layout/compose_message_activity.xml
+@@ -176,7 +176,7 @@
+                     <TextView
+                         android:id="@+id/send_button_mms"
+                         style="?android:attr/borderlessButtonStyle"
+-                        android:drawableBottom="@drawable/send_button_selector"
++                        android:drawableBottom="@drawable/send_button_selector_dark"
+                         android:drawablePadding="0dip"
+                         android:layout_width="wrap_content"
+                         android:textSize="11sp"
+@@ -192,7 +192,7 @@
+                     <ImageButton
+                         android:id="@+id/send_button_sms"
+                         style="?android:attr/borderlessButtonStyle"
+-                        android:src="@drawable/send_button_selector"
++                        android:src="@drawable/send_button_selector_dark"
+                         android:drawablePadding="0dip"
+                         android:layout_width="wrap_content"
+                         android:layout_height="0dip"
+diff --git a/res/layout/conversation_list_item.xml b/res/layout/conversation_list_item.xml
+index 23e8d88..eba75ce 100644
+--- a/res/layout/conversation_list_item.xml
++++ b/res/layout/conversation_list_item.xml
+@@ -51,6 +51,7 @@
+         android:layout_height="wrap_content"
+         android:layout_width="wrap_content"
+         android:textAppearance="?android:attr/textAppearanceSmall"
++        android:textColor="#7f7f7f"
+         android:singleLine="true"
+         android:layout_alignParentRight="true"
+         android:layout_alignParentBottom="true" />
+@@ -77,6 +78,7 @@
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:textAppearance="?android:attr/textAppearanceSmall"
++        android:textColor="#7f7f7f"
+         android:singleLine="true"
+         android:layout_marginTop="3dip"
+         android:layout_marginBottom="7dip"
+diff --git a/res/layout/message_list_item_recv.xml b/res/layout/message_list_item_recv.xml
+index 96c9865..8504500 100755
+--- a/res/layout/message_list_item_recv.xml
++++ b/res/layout/message_list_item_recv.xml
+@@ -23,6 +23,7 @@
+     android:id="@+id/msg_list_item_recv"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
++    android:background="#ff000000"
+     android:orientation="horizontal">
+ 
+     <LinearLayout android:id="@+id/mms_layout_view_parent"
+@@ -39,6 +40,7 @@
+                 class="com.android.mms.ui.QuickContactDivot"
+                 android:id="@+id/avatar"
+                 position="right_upper"
++                android:background="#ff000000"
+                 android:layout_alignParentLeft="true"
+                 android:layout_width="@dimen/avatar_width_height"
+                 android:layout_height="@dimen/avatar_width_height" />
+@@ -96,7 +98,7 @@
+                         android:layout_height="wrap_content"
+                         android:paddingRight="3dip"
+                         android:textAppearance="?android:attr/textAppearanceSmall"
+-                        android:textColor="@color/text_hairline" />
++                        android:textColor="#5f5f5f" />
+ 
+                     <ImageView
+                         android:id="@+id/locked_indicator"
+@@ -136,6 +138,7 @@
+                     android:linksClickable="false"
+                     android:textAppearance="?android:attr/textAppearanceSmall"
+                     android:textColor="@color/message_received"
++                    android:textColorLink="#5C5CFF"
+                     android:textSize="16sp"
+                     android:visibility="gone" />
+             </LinearLayout>
+diff --git a/res/layout/message_list_item_send.xml b/res/layout/message_list_item_send.xml
+index 4175e0e..2300fd5 100755
+--- a/res/layout/message_list_item_send.xml
++++ b/res/layout/message_list_item_send.xml
+@@ -23,6 +23,7 @@
+     android:id="@+id/msg_list_item_send"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
++    android:background="#ff000000"
+     android:orientation="horizontal">
+ 
+     <LinearLayout android:id="@+id/mms_layout_view_parent"
+@@ -122,7 +123,7 @@
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:textAppearance="?android:attr/textAppearanceSmall"
+-                        android:textColor="@color/text_hairline" />
++                        android:textColor="#5f5f5f" />
+                 </LinearLayout>
+ 
+                 <ViewStub android:id="@+id/mms_layout_view_stub"
+@@ -140,6 +141,7 @@
+                     android:gravity="right"
+                     android:textAppearance="?android:attr/textAppearanceSmall"
+                     android:textColor="@color/message_sent"
++                    android:textColorLink="#5C5CFF"
+                     android:textSize="16sp"
+                     android:visibility="gone"/>
+             </LinearLayout>
+diff --git a/res/layout/mms_chips_recipient_dropdown_item.xml b/res/layout/mms_chips_recipient_dropdown_item.xml
+index 2cb3fd3..559c944 100644
+--- a/res/layout/mms_chips_recipient_dropdown_item.xml
++++ b/res/layout/mms_chips_recipient_dropdown_item.xml
+@@ -29,7 +29,7 @@
+         android:orientation="vertical"
+         android:layout_weight="1">
+         <TextView android:id="@android:id/title"
+-                  android:textColor="@drawable/list_item_font_primary"
++                  android:textColor="#ffffffff"
+                   android:textSize="18sp"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+@@ -41,7 +41,7 @@
+             android:layout_height="wrap_content"
+             android:orientation="horizontal">
+             <TextView android:id="@android:id/text1"
+-                      android:textColor="@drawable/list_item_font_secondary"
++                      android:textColor="#ffcfcfcf"
+                       android:textSize="14sp"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+@@ -53,7 +53,7 @@
+                       android:layout_height="wrap_content"
+                       android:layout_weight="1" />
+             <TextView android:id="@android:id/text2"
+-                      android:textColor="@drawable/list_item_font_secondary"
++                      android:textColor="#ffcfcfcf"
+                       android:textSize="10sp"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+diff --git a/res/values/cm_colors.xml b/res/values/cm_colors.xml
+index 59dc58b..d3b710f 100644
+--- a/res/values/cm_colors.xml
++++ b/res/values/cm_colors.xml
+@@ -21,21 +21,21 @@
+     <color name="action_bar_button_text_color">#000000</color>
+ 
+     <!-- New text colors from layouts to make theme chooser apk easier to theme -->
+-    <color name="compose_message_edit_text">#000000</color>
+-    <color name="compose_message_text_counter">#cc333333</color>
+-    <color name="actionbar_text">#cc000000</color>
+-    <color name="delete_thread_dialog">#000000</color>
+-    <color name="button_text">#000000</color>
+-    <color name="message_received">#000000</color>
+-    <color name="message_sent">#000000</color>
+-    <color name="widget_unread_text">#777777</color>
+-    <color name="widget_loading">#000000</color>
++    <color name="compose_message_edit_text">#ffffffff</color>
++    <color name="compose_message_text_counter">#ffffffff</color>
++    <color name="actionbar_text">#ffdddddd</color>
++    <color name="delete_thread_dialog">#ffcccccc</color>
++    <color name="button_text">#ffffffff</color>
++    <color name="message_received">#ff33b5e5</color>
++    <color name="message_sent">#ffffffff</color>
++    <color name="widget_unread_text">#ffdddddd</color>
++    <color name="widget_loading">#ffffffff</color>
+ 
+     <!-- New Background colors from layouts to make theme chooser apk easier to theme -->
+-    <color name="background">#ffffff</color>
+-    <color name="quickmessage_body_dark_bg">#ff1e1e1e</color>
++    <color name="background">#ff000000</color>
++    <color name="quickmessage_body_dark_bg">#ff000000</color>
+     <color name="quickmessage_body_light_bg">#fff3f3f3</color>
+-    <color name="dividers">#eeeeee</color>
++    <color name="dividers">#ffeeeeee</color>
+     <color name="transparent">#00000000</color>
+ 
+ </resources>
+diff --git a/res/values/colors.xml b/res/values/colors.xml
+index 943b49f..36d7350 100644
+--- a/res/values/colors.xml
++++ b/res/values/colors.xml
+@@ -25,19 +25,19 @@
+     <drawable name="text_color_red">#ffff4444</drawable>
+     <drawable name="text_color_black">#ff000000</drawable>
+     <color name="text_hairline">#ffcccccc</color>
+-    <color name="message_count_color">#66333333</color>
++    <color name="message_count_color">#76cfcfcf</color>
+ 
+     <!-- Chat "sent time" text background -->
+-    <color name="timestamp_color">#bf000000</color>
++    <color name="timestamp_color">#7cefefef</color>
+ 
+     <!-- the background color used for unread conversation -->
+-    <color name="unread_bgcolor">#ffffffff</color>
+-    <color name="read_bgcolor">#ffeeeeee</color>
++    <color name="unread_bgcolor">#655e5e5e</color>
++    <color name="read_bgcolor">#55000000</color>
+ 
+-    <color name="widget_sender_text_color_read">#555555</color>
+-    <color name="widget_sender_text_color_unread">#333333</color>
+-    <color name="widget_subject_text_color_read">#777777</color>
+-    <color name="widget_subject_text_color_unread">#555555</color>
++    <color name="widget_sender_text_color_read">#ffdfdfdf</color>
++    <color name="widget_sender_text_color_unread">#ffefefef</color>
++    <color name="widget_subject_text_color_read">#ffbfbfbf</color>
++    <color name="widget_subject_text_color_unread">#ffcfcfcf</color>
+ 
+     <color name="translucent_white">#ccffffff</color>
+ 
+diff --git a/res/values/styles.xml b/res/values/styles.xml
+index 6550a7e..62174d4 100644
+--- a/res/values/styles.xml
++++ b/res/values/styles.xml
+@@ -24,24 +24,25 @@
+         <item name="android:textColor">?android:textColorSecondaryInverse</item>
+     </style>
+ 
+-    <style name="MmsHoloTheme" parent="@android:style/Theme.Holo.Light">
++    <style name="MmsHoloTheme" parent="@android:style/Theme.Holo">
++        <item name="android:windowBackground">@*android:color/black</item>
+     </style>
+ 
+     <style name="WidgetTitle" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
+-        <item name="android:textColor">#333333</item>
++        <item name="android:textColor">#ffefefef</item>
+         <item name="android:singleLine">true</item>
+     </style>
+ 
+     <style name="NotificationPrimaryText">
+-        <item name="android:textColor">#cccccc</item>
++        <item name="android:textColor">#ffdddddd</item>
+     </style>
+ 
+     <style name="NotificationSecondaryText">
+-        <item name="android:textColor">#666666</item>
++        <item name="android:textColor">#ffaaaaaa</item>
+     </style>
+ 
+     <style name="NotificationSubjectText">
+-        <item name="android:textColor">#999999</item>
++        <item name="android:textColor">#ffefefef</item>
+     </style>
+ 
+     <style name="TextShadowLight">
